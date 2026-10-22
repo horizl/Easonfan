@@ -829,8 +829,10 @@
     } else if (splashFull){
       splashFull.classList.add('on');
     }
-    var btn = document.getElementById('enterSite') || document.getElementById('enterSiteM');
-    if (btn) btn.addEventListener('click', finishSplash);
+    ['enterSite','enterSiteM'].forEach(function(id){
+      var b = document.getElementById(id);
+      if (b) b.addEventListener('click', finishSplash);
+    });
     document.addEventListener('keydown', function(e){
       if (e.key === 'Enter' && !splashDone) finishSplash();
     });
