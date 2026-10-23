@@ -67,11 +67,13 @@
       radial-gradient(120% 90% at 80% 18%, rgba(201,106,27,0.12) 0%, rgba(201,106,27,0.03) 42%, transparent 70%),
       linear-gradient(90deg, var(--bg) 0%, var(--bg) 55%, rgba(247,244,237,0.92) 70%, rgba(247,244,237,0.55) 84%, rgba(247,244,237,0.2) 100%);
   }
-  .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:80% 30%;filter:contrast(1.05);opacity:0.9;
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, transparent 55%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.75) 85%, #000 100%);
-    mask-image:linear-gradient(90deg, transparent 0%, transparent 55%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.75) 85%, #000 100%);
-  }
-  .hero-content{position:relative;z-index:2;width:100%;padding:110px 0 84px;}
+  .hero-bg img{display:none;}
+  .hero-content{position:relative;z-index:2;width:100%;padding:110px 0 84px;
+    display:flex;align-items:center;gap:clamp(28px,5vw,64px);}
+  .hero-copy{flex:1 1 520px;min-width:0;}
+  .hero-photo{flex:0 1 400px;min-width:0;}
+  .hero-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:52% 22%;
+    border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--panel);}
   .eyebrow{
     display:inline-flex;align-items:center;gap:10px;
     font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);
@@ -261,7 +263,11 @@
   .exp-side .stat{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:rgba(43,38,29,0.025);}
   .exp-side .stat b{display:block;font-family:var(--font-display);font-size:15px;letter-spacing:0.05em;}
   .exp-side .stat span{font-size:12px;color:var(--muted);}
+  .exp-side .stat a.paper-link{color:var(--accent);text-decoration:none;font-family:var(--font-display);}
+  .exp-side .stat a.paper-link:hover{text-decoration:underline;}
   .exp-side .btn{width:100%;}
+  .exp-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .exp-card .tags span{font-size:12px;color:var(--text);background:var(--accent-dim);border:1px solid rgba(201,106,27,0.25);padding:3px 9px;border-radius:999px;}
 
   /* ===== Footer ===== */
 
@@ -359,6 +365,10 @@
     .splash-split{display:none !important;}
     .splash-full img{object-fit:contain !important;object-position:center 30%;}
     .splash-full-shade{background:linear-gradient(180deg, rgba(247,244,237,0.97) 0%, rgba(247,244,237,0.78) 10%, rgba(247,244,237,0.35) 24%, transparent 40%);}
+    .hero-content{flex-direction:column;text-align:center;gap:32px;}
+    .hero-copy{display:flex;flex-direction:column;align-items:center;}
+    .hero-photo{max-width:340px;width:100%;}
+    .hero-cta{justify-content:center;}
   }
   @media (min-width:1025px){
     .splash-top{display:none;}
@@ -369,6 +379,8 @@
     .nav-links{width:100%;display:flex;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;}
     .nav-links a{min-height:40px;line-height:22px;padding:8px 11px;white-space:nowrap;}
     .hero h1{font-size:40px;}
+    .hero .cn-name{font-size:40px;}
+    .hero-photo{max-width:300px;}
     .splash-top h1{font-size:26px;margin:8px 0 4px;}
     .splash-top .splash-cta{margin-top:14px;}
   }
@@ -426,6 +438,7 @@
       <li><a href="#lens">Lens</a></li>
       <li><a href="#games">Games</a></li>
       <li><a href="#energo">EnerGo</a></li>
+      <li><a href="#research">Research</a></li>
       <li><a href="#impact">Impact</a></li>
       <li><a href="#build">Build</a></li>
     </ul>
@@ -435,20 +448,24 @@
 <!-- ===== Hero ===== -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="assets/aJRpNAGjli.jpg" alt="Yicheng Fan with the band">
   </div>
   <div class="wrap hero-content">
-    <div class="cn-name">范逸成</div>
-    <h1>Yicheng <span class="accent">(Eason)</span> Fan</h1>
-    <div class="roles">
-      <span><em>Bassist</em> &amp; Singer</span>
-      <span>Photographer</span>
-      <span>Game Designer</span>
+    <div class="hero-copy">
+      <div class="cn-name">范逸成</div>
+      <h1>Yicheng Fan<br><span class="accent" style="text-transform:none;letter-spacing:0.02em;">EASON</span></h1>
+      <div class="roles">
+        <span><em>Bassist</em> &amp; Singer</span>
+        <span>Photographer</span>
+        <span>Game Designer</span>
+      </div>
+      <p class="sub">I'm an IB student at Qibao Dwight High School in Shanghai. Outside class I play bass and sing in a band, cover campus events with a camera, and design small games under big deadlines. This page is a look at the work I do beyond the classroom.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#stage">Explore my work</a>
+      </div>
     </div>
-    <p class="sub">I'm an IB student at Qibao Dwight High School in Shanghai. Outside class I play bass and sing in a band, cover campus events with a camera, and design small games under big deadlines. This page is a look at the work I do beyond the classroom.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#stage">Explore my work</a>
-    </div>
+    <figure class="hero-photo">
+      <img src="assets/hero_portrait.jpg" alt="Yicheng Fan speaking at the school photography exhibition">
+    </figure>
   </div>
 </section>
 
@@ -469,11 +486,11 @@
       <div class="bi-text">
         <h3>The Band — Luckspure</h3>
         <div class="role">Bassist · Singer · Equipment Supervisor</div>
-        <p>Since Grade 9 I've been the bass player — and often the voice — of Luckspure. I adapt and simplify bass lines while keeping the groove, record vocals for our IB Music arrangements, and keep the cables, amps and setlists in order before every show. Next stop: the 2028 New York Dwight Music Festival.</p>
+        <p>Since Grade 9 I've been the bass player — and often the voice — of Luckspure. I adapt and simplify bass lines while keeping the groove, record vocals for our IB Music arrangements, and keep the cables, amps and setlists in order before every show. Next stop: the 2027 New York Dwight Music Festival.</p>
         <div class="tag-row">
           <span class="tag">Weekly rehearsals</span>
           <span class="tag">Bass · Vocals</span>
-          <span class="tag">NYC 2028</span>
+          <span class="tag">NYC 2027</span>
         </div>
       </div>
     </div>
@@ -548,7 +565,7 @@
     <div class="sec-head">
       <div class="no">02 — Lens</div>
       <h2>Photography</h2>
-      <p>Two tracks, one habit of looking carefully: my own quiet frames, and the event coverage I shoot for the school's official WeChat account.</p>
+      <p>Two tracks, one habit of looking carefully: my own quiet frames, and the event coverage I shoot for the school's official WeChat account — all of it shot on a <strong>Nikon D5</strong> or the <strong>Nikon Z50ii</strong>.</p>
       <div class="rule"></div>
     </div>
 
@@ -556,15 +573,15 @@
       <div class="track">
         <h3>Personal Work</h3>
         <div class="sub">What I frame when I choose the subject</div>
-        <p>Night gardens, stone arches and quiet corners — the frames I take for myself when I'm out walking with a camera.</p>
+        <p>Night gardens, stone arches and quiet corners — the frames I take for myself when I'm out walking with a camera. Both of these were shot at the Twenty-Four Bridges in Yangzhou's Slender West Lake.</p>
         <div class="photo-row">
           <figure class="lightbox-img" data-src="assets/LPHg2h0kPp.jpg">
             <img src="assets/LPHg2h0kPp.jpg" alt="Night garden lantern scene" data-full="assets/LPHg2h0kPp.jpg">
-            <figcaption>Night Garden</figcaption>
+            <figcaption>Night Garden — Twenty-Four Bridges, Yangzhou</figcaption>
           </figure>
           <figure class="lightbox-img" data-src="assets/meUl4eRLpK.jpg">
             <img src="assets/meUl4eRLpK.jpg" alt="Classical stone arch bridge" data-full="assets/meUl4eRLpK.jpg">
-            <figcaption>Stone Arch Bridge</figcaption>
+            <figcaption>Stone Arch Bridge — Twenty-Four Bridges, Yangzhou</figcaption>
           </figure>
         </div>
       </div>
@@ -705,11 +722,46 @@
   </div>
 </section>
 
+<!-- ===== Research ===== -->
+<section class="block" id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">05 — Research</div>
+      <h2>Academic Paper</h2>
+      <p>Beyond the stage and the camera — a full research paper on how an animation studio builds lasting advantage through digital transformation.</p>
+      <div class="rule"></div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-main">
+        <span class="chip">IB Research · Business &amp; Technology</span>
+        <h3 style="text-transform:none;letter-spacing:0.01em;">The Innovation Strategy and Sustainable Competitive Advantage in Toei Animation's 3DCG Transformation</h3>
+        <div class="role-line">A case study of Toei Animation's hybrid 2D/3D production pipeline</div>
+        <p><b>Guiding question:</b> how does Toei Animation's 3DCG transformation strategy facilitate building sustainable competitive advantage — and what most inhibits that facilitation?</p>
+        <p>Using a dynamic-capabilities lens, the paper traces Toei's move from hand-drawn 2D toward a 3D-assisted pipeline — 3DLO background tools, in-house Unreal Engine layout instruments, reusable style assets — and evaluates the strategy through SWOT, STEEPLE and Ansoff Matrix analysis. It argues that sustainable advantage depends not on the technology itself, but on dual artistic–technical leadership, reusable asset libraries, and capability-linked governance across a global production network.</p>
+        <div class="tags">
+          <span>Toei Animation</span>
+          <span>3DCG Transformation</span>
+          <span>Innovation Strategy</span>
+          <span>Dynamic Capabilities</span>
+          <span>Sustainable Competitive Advantage</span>
+        </div>
+      </div>
+      <div class="exp-side">
+        <div class="stat">
+          <b>Toei Animation</b>
+          <span>3DCG transformation · hybrid production</span>
+        </div>
+        <a class="btn btn-primary" href="assets/toei-animation-3dcg-paper.pdf" target="_blank" rel="noopener">Full paper ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== Impact ===== -->
 <section class="block" id="impact">
   <div class="wrap">
     <div class="sec-head">
-      <div class="no">05 — Impact</div>
+      <div class="no">06 — Impact</div>
       <h2>Community Work</h2>
       <p>Using the same camera skills for someone else's story — supporting apple farmers in rural Henan with photography and marketing.</p>
       <div class="rule"></div>
@@ -744,7 +796,7 @@
 <section class="block" id="build">
   <div class="wrap">
     <div class="sec-head">
-      <div class="no">06 — Build</div>
+      <div class="no">07 — Build</div>
       <h2>Model Building</h2>
       <p>A slower hobby to balance the stage: building Gunpla kits, one runner at a time.</p>
       <div class="rule"></div>
